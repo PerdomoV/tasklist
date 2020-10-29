@@ -12,7 +12,7 @@ function validation($name, $description, $fecha){
         $errors['name']='Nombre incorrecto';
     }
 
-    if(!(strlen($description)<=100) or !preg_match('/[a-zA-Z0-9\s]/', $description)){
+    if(!(strlen($description)<=100 && 0<=strlen($name)) and !preg_match('/[a-zA-Z0-9\s]/', $description)){
         $errors['description']='Descripcicón incorrecta';
     }
 

@@ -16,7 +16,7 @@ function validation($name, $description, $fecha){
         $errors['description']='Descripcicón incorrecta';
     }
 
-    if(!preg_match('/(\d\d\d\d\-\d\d\-\d\d){1}/', $fecha) or empty($fecha)){
+    if(!preg_match('/(\d\d\d\d\-\d\d\-\d\d){1}/', $fecha) or empty($fecha) or DateTime::createFromFormat ("YYYY-MM-DD" , $fecha)==false){
         $errors['fecha']='Fecha incorrecta';
     }
 

@@ -36,6 +36,11 @@ class taskController extends baseController{
         $name=!empty($_POST['name'])? $task->getdb()->escape_string($_POST['name']):false;
         $description=!empty($_POST['description'])? $task->getdb()->escape_string($_POST['description']):false;
         $fecha=!empty($_POST['fecha'])? $task->getdb()->escape_string($_POST['fecha']):false;
+
+        //$valFecha=DateTime::createFromFormat ("YYYY-MM-DD" , $fecha); 
+        //var_dump($valFecha);
+        //die();
+
         
         $result_validation=validation($name,$description,$fecha);
         
@@ -64,6 +69,8 @@ class taskController extends baseController{
                 if(!empty($task->getdb()->error)){
                     $error['db']="Error al guardar";
                 }
+                //var_dump($error);
+                //die();  
                 $this->create($error);
             }
         else:

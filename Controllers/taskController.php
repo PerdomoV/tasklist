@@ -19,11 +19,11 @@ class taskController extends baseController{
         $this->view("index",$allTasks);
     }
 
-    public function create($errors=[]){
+    public function create($data=[]){
         
         //var_dump($errors);
         //die();
-        $this->view("new_task", $errors);
+        $this->view("new_task", $data);
     }
 
     public function store(){
@@ -46,7 +46,10 @@ class taskController extends baseController{
         
         //var_dump($result_validation);
         //die();
-        
+        $data=[];
+        $data['post']=$_POST;
+
+
         if(!is_array($result_validation)):
             $task->setName($name);
             $task->setDescription($description);
@@ -57,7 +60,8 @@ class taskController extends baseController{
             //die();
             if($saved){
                 //$_SESSION['exito']='Tarea creada';
-                $this->redirect("task",'index');
+                $data['exito']="Nueva tarea creada";
+                $this->redirect("task",'index',$data);
                 //var_dump($_SESSION['exito']);
                 //die();
                 /*header("Location: ");*/
@@ -67,21 +71,50 @@ class taskController extends baseController{
                 //var_dump($task->getdb()->error);
                 //die();    
                 if(!empty($task->getdb()->error)){
-                    $error['db']="Error al guardar";
+                    $data['db']="Error al guardar";
                 }
                 //var_dump($error);
                 //die();  
-                $this->create($error);
+                $this->create($data);
             }
         else:
-            //var_dump($result_validation);
+            $data['result_validation']=$result_validation;
+            //var_dump($data);
             //die();
-            $this->create($result_validation);
+
+            $this->create($data);
         endif;
     }
 
+    public function update(){
+        
+      
+        $task= new Task("tasklist");
+        
+        $name=!empty($_POST['name'])? $task->getdb()->escape_string($_POST['name']):false;
+        $description=!empty($_POST['description'])? $task->getdb()->escape_string($_POST['description']):false;
+        $fecha=!empty($_POST['fecha'])? $task->getdb()->escape_string($_POST['fecha']):false;
+
+        //$valFecha=DateTime::createFromFormat ("YYYY-MM-DD" , $fecha); 
+        //var_dump($valFecha);
+        //die();
+
+        
+        $result_validation=validation($name,$description,$fecha);
+        
+        //var_dump($result_validation);
+        //die();
+        $data=[];
+        $data['post']=$_POST;
 
 
+        if(!is_array($result_validation)):
+            $task->setName($name);
+            $task->setDescription($description);
+            $task->setFecha($fecha);
+        
+        endif;
+}
 
 
 }

@@ -18,12 +18,6 @@
         <header id='header'>
             <h1> Nueva tarea</h1>
 
-            <?php 
-            if(!empty($datos['db'])){    
-                echo '<p>'.$datos['db'].'</p>';
-            }
-            ?> 
-
         </header>
     
 

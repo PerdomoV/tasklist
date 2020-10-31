@@ -24,8 +24,21 @@ class baseController{
 	}
 
 
-	public function redirect($controller=DEFAULT_CONTROLLER, $action=DEFAULT_ACTION){
-		header("Location:index.php?controller=".$controller."&action=".$action);
+	public function redirect($controller=DEFAULT_CONTROLLER, $action=DEFAULT_ACTION, $data){
+
+		$str="";
+
+		if(is_array($data)){
+			foreach($data as $key=>$value){
+				$str=$str."&".$key."=".$value;
+			}
+			header("Location:index.php?controller=".$controller."&action=".$action."".$str);
+		}else{
+			
+			$str="&".$data."=".$data;
+			header("Location:index.php?controller=".$controller."&action=".$action."".$str);
+		}
+
 	}
 
 	}

@@ -14,6 +14,9 @@
 
 
 require_once 'views/layout/header.php';
+if(!empty($_GET['exito'])){
+    echo "<p>".$_GET['exito']."</p>";
+}
 require_once 'views/layout/table.php';
 require_once 'views/layout/footer.php';
 

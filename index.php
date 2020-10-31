@@ -1,4 +1,11 @@
 <?php
+if(!isset($_SESSION)){
+    session_start();
+    //$_SESSION['hola']='hola';
+    //var_dump($_SESSION);
+    //die();
+}
+
 require_once 'helpers/indexHelper.php';
 require_once 'config/global.php';
 

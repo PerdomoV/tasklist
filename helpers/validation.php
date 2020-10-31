@@ -1,8 +1,4 @@
 <?php
-// if(!empty($_SESSION)){
-//     session_start();
-// }
-
 
 function validation($name, $description, $fecha){
 

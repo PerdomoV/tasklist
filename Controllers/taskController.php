@@ -23,6 +23,8 @@ class taskController extends baseController{
         
         //var_dump($errors);
         //die();
+            
+        
         $this->view("new_task", $errors);
     }
 
@@ -45,6 +47,13 @@ class taskController extends baseController{
         $result_validation=validation($name,$description,$fecha);
         
         //var_dump($result_validation);
+        //die();
+        
+        
+        
+        $_SESSION['post_create']=$_POST;
+        
+        //var_dump($_SESSION);
         //die();
         
         if(!is_array($result_validation)):

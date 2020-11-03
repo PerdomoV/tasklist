@@ -27,7 +27,11 @@ class baseModel{
 		while($row = $query->fetch_object()){
 			$resultSet[]=$row;
 		}
-		return $resultSet;
+		if(!empty($resultSet)){
+			return $resultSet;
+		}else{
+			return [];
+		}
 	}
 
 

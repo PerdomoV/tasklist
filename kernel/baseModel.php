@@ -32,12 +32,13 @@ class baseModel{
 
 
 	public function getById($id){
-		$query=$this->db->query("SELECT * FROM $this->table WHERE id=$this->id;");
+		$query=$this->getdb()->query("SELECT * FROM $this->table WHERE id=$id;");
 		if($row = $query->fetch_object()){
 			$resultSet  = $row;
+			return $resultSet;
 		}
 
-		return $resultSet;
+
 
 	}
 
@@ -52,8 +53,8 @@ class baseModel{
 	}
 
 	public function deleteById($id){
-		$query=$this->db->query("DELETE FROM $this->table WHERE id = $id;");
-		return $query;
+		$result=$this->getdb()->query("DELETE  FROM $this->table WHERE id = $id;");
+		return $result;
 	}
 
 	public function deleteBy($column,$value){
@@ -81,9 +82,8 @@ class baseModel{
 			$resultSet=false;
 
 		}
-		return $resultSet;	
-	} 
+		return $resultSet;
+	}
 
 
 }
-

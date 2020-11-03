@@ -4,5 +4,9 @@
     </div>
 </body>
 </div>
+<?php if(!empty($data['exito'])): ?>
+    <?php $data['exito']='';?>
+<?php endif; ?>
+
 
 </html>

@@ -65,7 +65,13 @@ class Task extends baseModel{
 	
 		$save=$this->getdb()->query($query);
 		return $save;		
-	}				
+	}
+	
+	public function edit($id){
+		$query="UPDATE tasklist 	SET name = '{$this->name}', description = '{$this->description}', fecha='{$this->fecha}' WHERE id=$id";
+		$edited=$this->getdb()->query($query);
+		return $edited;
+	}
 
 }
 				

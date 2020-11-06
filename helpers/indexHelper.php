@@ -9,9 +9,6 @@ function loadController($controller=DEFAULT_CONTROLLER){
         $strController = "Controllers/".DEFAULT_CONTROLLER."Controller.php";
     }
 
-    //var_dump($controller);
-    //die();
-
     require_once $strController;
 
     $controllerObj= new $controller();

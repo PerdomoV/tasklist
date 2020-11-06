@@ -1,13 +1,9 @@
 <?php
-// if(!empty($_SESSION)){
-//     session_start();
-// }
 
 
 function validation($name, $description, $fecha){
 
     $errors=[];
-    /*primero el nnombre*/
     if(!(strlen($name)<=40) or !preg_match('/[a-zA-Z0-9]/', $name) or empty($name)){
         $errors['name']='Titulo incorrecto';
     }
@@ -23,8 +19,6 @@ function validation($name, $description, $fecha){
     if(empty($errors)){
         return true;
     }else{
-        //$_SESSION['errors']=$errors;
-        //var_dump($_SESSION['errors']);die();
         return $errors;
     }
 }

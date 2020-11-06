@@ -11,9 +11,6 @@
 
 <body>
     
-    
-
-
     <div id='container'>
         <header id='header'>
             <h1> Nueva tarea</h1>

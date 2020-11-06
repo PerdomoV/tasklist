@@ -16,15 +16,7 @@
         
         </tr>
         <?php endforeach; ?>
-    
-    <?php else: ?>
-        <!-- <p>No hay tareas pendientes </p> -->
-    <?php endif; ?>
-    <!-- <tr>
-    <td>Eve</td>
-    <td>Jackson</td>
-    <td>94</td>
-    <td><a href='#'>Eliminar</a></td>  
-    </tr> -->
+<?php endif; ?>
+
 </table>
     

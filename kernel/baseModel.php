@@ -23,7 +23,7 @@ class baseModel{
 	}
 
 	public function getAll(){
-		$query=$this->db->query("SELECT * FROM $this->table ORDER BY id DESC;");
+		$query=$this->getdb()->query("SELECT * FROM $this->table ORDER BY id DESC;");
 		while($row = $query->fetch_object()){
 			$resultSet[]=$row;
 		}
@@ -47,7 +47,7 @@ class baseModel{
 	}
 
 	public function getBy($column,$value){
-		$query=$this->db->query("SELECT * FROM $this->table WHERE $column='$value';");
+		$query=$this->getdb()->query("SELECT * FROM $this->table WHERE $column='$value';");
 		while($row=$query->fetch_object()){
 			$resultSet[]=$row;
 		}
@@ -62,13 +62,13 @@ class baseModel{
 	}
 
 	public function deleteBy($column,$value){
-		$query = $this->db->query("DELETE FROM $this->table WHERE $column='$value';");
+		$query = $this->getdb()->query("DELETE FROM $this->table WHERE $column='$value';");
 		return $query;
 
 	}
 
     public function ejecutarSql($query){
-		$query = $this->db->query($query);
+		$query = $this->getdb()->query($query);
 
 		if($query){
 			if($query->num_rows >1){
